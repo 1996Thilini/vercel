@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block content %}
+    <center>
+    <h1>Welcome to Flask blog..</h1><br><br>
+    {% for getpost in posts %}
+        <a href="home/{{getpost.key()}}">
+            <h2>{{getpost.val().title}}</h2>
+        </a>
+        
+        <a href="edit/{{getpost.key()}}">
+            <span class="badge badge-warning">Edit</span>
+        </a>
+        <br><br><br>
+        
+
+    {% endfor %}
+    </center>
+{% endblock %}

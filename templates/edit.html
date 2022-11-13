@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for p in data %}
+
+<h1> Edit "{{p.val().title}}" </h1>
+
+<form method="post", action="/edit/{{p.key()}}">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" placeholder="Post title"
+               class="form-control"
+               value="{{p.val().title}}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="content">Content</label>
+        <textarea name="content" placeholder="Post content"
+                  class="form-control">{{p.val().content}}</textarea>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+<form method="POST" action="/delete/{{p.key()}}">
+    <input class="delete" value="Delete" type="submit" >
+</form>
+
+<hr>
+
+
+{% endfor %}
+{% endblock %}
